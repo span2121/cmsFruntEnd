@@ -1,0 +1,77 @@
+//students details
+drop table if exists students;
+CREATE  TABLE IF NOT EXISTS `students` (
+    `id` BIGINT UNSIGNED AUTO_INCREMENT,
+    `code` VARCHAR(50) NOT NULL UNIQUE ,
+    `first_name` VARCHAR(255) NOT NULL,
+    `last_name` VARCHAR(255) NOT NULL,
+    `email` VARCHAR(255) NOT NULL,
+    `phone` VARCHAR(50) NOT NULL,
+    `father_name` varchar(50),
+    `motner_name` varchar(50),
+    `emergency_contact` VARCHAR(50),
+    `DOB` DATETIME ,
+    `branch` VARCHAR(255) NOT NULL,
+    `adhar_number` int,
+    `semister` int,
+    `gender` TINYINT UNSIGNED DEFAULT 0,
+    `is_deleted` TINYINT UNSIGNED DEFAULT 0,
+    `created_at` DATETIME NOT NULL,
+    `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (`id`))
+  ENGINE = InnoDB;
+
+//  roles for role based accessability
+drop table if exists roles;
+CREATE  TABLE IF NOT EXISTS `roles` (
+    `role_id` INT unsigned auto_increment,
+    `category` varchar(50),
+    primary key(`role_id`)
+    );
+
+    // for handling notifications 
+    drop table if exists notifications;
+    CREATE TABLE IF NOT EXISTS `notifications` (
+    `notificationid` BIGINT UNSIGNED auto_increment,
+    `notification_detail` varchar(1000),
+    `notification_to_role` int,
+    `notification_url` varchar(250),
+    primary key(`notificationid`)
+    );
+
+        // user table for login validation
+
+        drop table if exists user;
+        create table if not exists `user` (
+        `user_id` BIGINT UNSIGNED AUTO_INCREMENT,
+        `user_name` varchar(50),
+        `passwd` varchar(20),
+        `email` varchar(50),
+        `role_id` int,
+        `is_enable` TINYINT UNSIGNED DEFAULT 1,
+          `created_at` DATETIME NOT NULL,
+          `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+          PRIMARY KEY (`user_id`))
+        ENGINE = InnoDB;
+        
+
+// teachers table for teachers table
+
+create table if not exists `teacher`(
+    `teachers_id` BIGINT UNSIGNED AUTO_INCREMENT,
+    `teacher_code` varchar(5),
+    `first_name` varchar(50) not null,
+      `last_name` varchar(50) not null,
+      `branch` varchar(50),
+      `DOB` DATETIME not null ,
+      `qualification` varchar(50),
+      `phone` numeric,
+      `gender` varchar(10),
+      `email` varchar(50) not null,
+      `is_deleted` TINYINT UNSIGNED DEFAULT 0,
+      `created_at` DATETIME NOT NULL,
+      `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+      `permanent address` varchar(100) not null,
+      PRIMARY KEY (`teachers_id`));
+
+//need to add result table and subjects table
