@@ -1,6 +1,6 @@
 'use strict';
 const mysql = require('mysql');
-//local mysql db connection
+//mysql db connections
 
 const dbConn = mysql.createConnection({
   host     : 'us-cdbr-east-03.cleardb.com',
