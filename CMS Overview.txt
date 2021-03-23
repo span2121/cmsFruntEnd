@@ -1,0 +1,41 @@
+Title => Collage Management System
+Modules => 
+1. Register
+2. Profile
+3. Circulars
+4. Activities
+
+Register => Teacher and students can register with respective required fields, while registering 
+			I am asking for personal details like student name Date of birth and one unique code for differenciability, 
+			educational details and making to set password here. 
+			
+Profile => The view id different for teacher and student
+	Student -> In Profile will show personal details in a box and at below will show his educational details in a table.
+	Teacher -> In profile will show personal details of teacher. If the teacher is HOD will show all students list in a table. 
+				if teacher is not HOD will show only the students assigned under respective teacher. 
+				Here we have the feature of search for easy serach. you can serach based on student code
+
+Circular => Only teachers have the access of creation of circulars. Teacher can send circular to student/teachers/both with the time duration. 
+			Means teacher can mention from when circular should be visible(start date) and from what date circular should not be visibble (due date).
+			and if teacher logged in only circulars assigned to teacher and all only visible in case of student he can see the circulars assigned to students and all.
+
+Activity => It is a 3 layer process. Any teacher can create activity for the perticular teacher. so once teacher logged in one table will be visible with activity list. here teacher can search the activities by teacher code.
+			once click on the teacher activity. teacher will be able to assign its sub activities to students.
+			in the same page teacher can see the table of sub activities assigned to students. and the status of sub activities.
+			If student loggedn in in activity module he can see the list of activities with priority level. he can change status 
+			if the activities from pending to in progress once he started his work. once assigned task is completed he can again change status from in progress to completed.
+			
+
+Software used
+	Visual studio code (IDE)
+	Node JS	
+	React js 
+	my sql workbench
+
+System requirements for our application
+	Windows 7 or higher
+	Processor Base Frequency of 1.8 GHz or higher
+	4 GB RAM or more
+	75 MB of available disk space or more
+	Minimal screen resolution: 1366x768 pixels
+	Minimal Bandwidth of 0.75 Mbit/s upload and 0.75 Mbit/s download (*)
