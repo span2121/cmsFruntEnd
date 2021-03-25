@@ -9,10 +9,11 @@ import BootstrapTable from "react-bootstrap-table-next";
 import ButtonIcon from '../common/buttonIcon'
 import { Fragment } from 'react'
 import moment from 'moment'
-import {roles} from '../util'
+import {roles, isURL} from '../util'
 import { CardBody } from 'reactstrap'
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
+
 const columns = (deleteCircular, EditCircular) => [
     {
         dataField:"circular_title",
@@ -40,7 +41,7 @@ const columns = (deleteCircular, EditCircular) => [
         dataField: "circular_url",
         text: "Attachment",
         formatter : (circular_url) => {
-          return circular_url? <a href={circular_url} target="_blank" alt="No URL found">View</a> : null
+          return circular_url != "null" && isURL(circular_url) ? <a href={circular_url} target="_blank" alt="No URL found">View</a> : null
         },
         sort:true
     },
@@ -86,12 +87,12 @@ const deleteCircular = (circularId) => {
     })
 }
 
-const getRelatedCirculars = () => {
+const getRelatedCirculars = async () => {
     const circularObject = {
         action:"GET_CIRCULARS",
         circulartoRole:entity.userRole
     }
-    circular(circularObject, API_PATH)
+   await circular(circularObject, API_PATH)
     .then(res => {
         setCirculars(res.results)
     })
@@ -107,7 +108,6 @@ const handleOnCircularAdded = () => {
     getRelatedCirculars()
     setShowCreateCircular(false)
 }
-console.log(showCreateCircular)
     return (
        
      <React.Fragment >

@@ -117,7 +117,7 @@ const Login = () =>  {
             </div>
             <div className="Login">
             <div>
-              <Button onClick={()=> setOpen(true) } style={{position:"fixed", right:"15px", top:"50px", backgroundColor:"steelblue"}} color="primary" variant="contained" >Register</Button>
+              <Button onClick={()=> setOpen(true) } style={{position:"fixed", right:"35px", top:"50px", backgroundColor:"steelblue"}} color="primary" variant="contained" >Register</Button>
               <SimpleDialog open={open} onClose={handleClose} />
             </div>
             <br/>

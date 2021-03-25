@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
   }));
 
   function getSteps() {
-    return ['personal informations', 'Educational details', 'set Password'];
+    return ['Personal Informations', 'Educational Details', 'Set Password'];
   }
   
   const getparameters = (allDetails, confirmPassword, BirthDate) => {
@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
       return allDetails.find(i=> i.label===label)?.value
     }
    const studentObject = {
-    action:'STUDENT_REGISTER' , regCode :  getValue('Student Code'), usnNumber :  getValue('USN Number'), firstName :  getValue('First Name'), 
+    action:'STUDENT_REGISTER' , regCode :  getValue('Student Code'), usnNumber :  getValue('SRN Number'), firstName :  getValue('First Name'), 
     lastName :  getValue('Last Name'), fatherName :  getValue('Father Name'), motherName :  getValue('Mother Name'), email :  getValue('Email Id'),  
     phoneNo :  getValue('Phone No.'), emergencyNo :  getValue('Emergency Contact'), branch :  getValue('Branch'), instructor :  getValue('Instructor'),
     gender :  getValue('Gender'), DOB : BirthDate?  moment(BirthDate)?.format(dateFormat) || null : null , matrixPercentage :  getValue('10th'), puPercentage :  getValue('PUC'), 
@@ -85,12 +85,17 @@ const Register = () => {
     return percentages;
   }
 
+  function validateMarks(s) {
+    var rgx = /^[0-9]*\.?[0-9]*$/;
+    return s.match(rgx);
+}
+
   const ValidateEducationDetails = (eduObject) => {
     const { matrix, puc, sem1, sem2, sem3, sem4, sem5, sem6, sem7, sem8} = eduObject
     let isInError = 0
     if(matrix)
     {
-      if(isNaN(matrix))
+      if(!validateMarks(matrix))
      {
         toast.error(" matrix percentage shoild be in numbers only")
         isInError = 1;
@@ -98,7 +103,7 @@ const Register = () => {
     }
     if(puc)
     {
-      if(isNaN(puc))
+      if(!validateMarks(puc))
      {
         toast.error(" puc percentage shoild be in numbers only")
         isInError = 1;
@@ -106,7 +111,7 @@ const Register = () => {
     }
     if(sem1)
     {
-      if(isNaN(sem1))
+      if(!validateMarks(sem1))
      {
         toast.error(" sem1 percentage shoild be in numbers only")
         isInError = 1;
@@ -114,7 +119,7 @@ const Register = () => {
     }
     if(sem2)
     {
-      if(isNaN(sem2))
+      if(!validateMarks(sem2))
      {
         toast.error(" sem2 percentage shoild be in numbers only")
         isInError = 1;
@@ -122,7 +127,7 @@ const Register = () => {
     }
     if(sem3)
     {
-      if(isNaN(sem3))
+      if(!validateMarks(sem3))
      {
         toast.error(" sem3 percentage shoild be in numbers only")
         isInError = 1;
@@ -130,7 +135,7 @@ const Register = () => {
     } 
     if(sem4)
     {
-      if(isNaN(sem4))
+      if(!validateMarks(sem4))
      {
         toast.error(" sem4 percentage shoild be in numbers only")
         isInError = 1;
@@ -138,7 +143,7 @@ const Register = () => {
     }
     if(sem5)
     {
-      if(isNaN(sem5))
+      if(!validateMarks(sem5))
      {
         toast.error(" sem5 percentage shoild be in numbers only")
         isInError = 1;
@@ -146,7 +151,7 @@ const Register = () => {
     }
     if(sem6)
     {
-      if(isNaN(sem6))
+      if(!validateMarks(sem6))
      {
         toast.error(" sem6 percentage shoild be in numbers only")
         isInError = 1;
@@ -154,7 +159,7 @@ const Register = () => {
     }
     if(sem7)
     {
-      if(isNaN(sem7))
+      if(!validateMarks(sem7))
      {
         toast.error(" sem7 percentage shoild be in numbers only")
         isInError = 1;
@@ -162,7 +167,7 @@ const Register = () => {
     }
     if(sem8)
     {
-      if(isNaN(sem8))
+      if(!validateMarks(sem8))
      {
         toast.error(" sem8 percentage shoild be in numbers only")
         isInError = 1;
@@ -179,7 +184,7 @@ const Register = () => {
     if(!regCode)
       toast.error("Student Code is required")
     if(!usnNumber)
-      toast.error("USN Number is required")
+      toast.error("SRN Number is required")
     if(!firstName)
       toast.error("First Name is required")
     if(!lastName)
@@ -293,6 +298,11 @@ const Register = () => {
        setActiveStep((prevActiveStep) => prevActiveStep + 1);
      } else if(activeStep === 1)
      {
+      if(!(studentEduDetails?.length > 1))
+      {
+         toast.error("please enter Educational details")
+         return;
+      }
       const educational = [...studentEduDetails]
       let eduDetails = []
      for(let i=0; i< educational.length; i++)

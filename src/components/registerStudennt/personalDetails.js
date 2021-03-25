@@ -11,7 +11,7 @@ import AppContext from '../contect';
 const Semister=[1,2,3,4,5,6,7,8]
 let fields = () => [
    [{ id:1, label:"Student Code", type: "text", value:"" },{id:2, label:"First Name", type:"text",value:""}],
-   [{ id:3, label:"USN Number", type:"text", value:"" }, {id:4, label:"Last Name", type:"text", value:"" }],
+   [{ id:3, label:"SRN Number", type:"text", value:"" }, {id:4, label:"Last Name", type:"text", value:"" }],
    [{ id:5, label:"Email Id", type:"text", value:"" }, { id:6, label: "Father Name", type:"text", value:"" }],
    [{ id:7, label:"Phone No.", type:"text", value:"" },{ id:8, label: "Mother Name", type:"text", value:"" }],
    [{ id:9, label:"Adhar number", type:"text", value:"" }, { id:10, label:"Emergency Contact", type:"text", value:"" }],

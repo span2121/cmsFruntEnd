@@ -25,7 +25,7 @@ const StudentsTable = ({ allStudents }) => {
         },
         {
             dataField: "USN_number",
-            text: "USN No.",
+            text: "SRN No.",
             sort:true
         },
         {

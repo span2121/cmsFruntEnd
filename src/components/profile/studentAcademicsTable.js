@@ -47,7 +47,7 @@ const StudentAcademicsTable = ({ educationalDetails, code }) => {
           <TableRow>
             <TableCell className={classes.tableHeader} > CODE</TableCell>
             <TableCell className={classes.tableHeader}   align="right">CLASS</TableCell>
-            <TableCell className={classes.tableHeader}   align="right">PERCENTAGE</TableCell>
+            <TableCell className={classes.tableHeader}   align="right">PERCENTAGE/CGPA</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

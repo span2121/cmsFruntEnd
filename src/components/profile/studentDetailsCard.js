@@ -54,7 +54,7 @@ return <Container className="mt-2">
                       <Typography className={classes.detailsAlign}> {personalDetails?.code}</Typography>
                     </Col>
                     <Col className={classes.rowStyle}>
-                    <Typography className={classes.labelStyle}> USN Number :</Typography>
+                    <Typography className={classes.labelStyle}> SRN Number :</Typography>
                       <Typography className={classes.detailsAlign}> {personalDetails?.USN_number}</Typography>
                     </Col>
                 </Row>
