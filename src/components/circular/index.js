@@ -14,7 +14,7 @@ import { CardBody } from 'reactstrap'
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 
-const columns = (deleteCircular, EditCircular) => [
+const columns = (deleteCircular, EditCircular, roleId) => [
     {
         dataField:"circular_title",
         text:"Title",
@@ -44,20 +44,23 @@ const columns = (deleteCircular, EditCircular) => [
           return circular_url != "null" && isURL(circular_url) ? <a href={circular_url} target="_blank" alt="No URL found">View</a> : null
         },
         sort:true
+        
     },
     {
         dataField: "circular_id",
         text: "Delete",
         formatter : (id) => {
           return <DeleteIcon color="primary" style={{cursor:"pointer"}} onClick={() => deleteCircular(id)} />
-        }   
+        },
+        hidden: roleId != roles.student? false: true
     },
     {
         dataField: "circular_id",
         text: "Edit",
         formatter : (id, row) => {
           return <EditIcon color="primary" style={{cursor:"pointer"}} onClick={() => EditCircular(id, row)} />
-        }
+        },
+        hidden: roleId != roles.student? false: true
     }
 ]
 
@@ -86,6 +89,7 @@ const deleteCircular = (circularId) => {
         console.log(err);
     })
 }
+console.log(roles.student, entity.userRole)
 
 const getRelatedCirculars = async () => {
     const circularObject = {
@@ -129,7 +133,7 @@ const handleOnCircularAdded = () => {
             bootstrap4
             keyField="assetnotesId"
             data={circulars}
-            columns={columns(deleteCircular, EditCircular)}
+            columns={columns(deleteCircular, EditCircular, entity?.userRole)}
             bordered={true}
             style={{width:"100%"}}
             classes={tableStyle}
